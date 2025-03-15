@@ -17,7 +17,7 @@ export function useTelegram() {
         onToggleButton,
         tg,
 //        user: tg.initDataUnsafe?.user,
-        user: tg.initDataUnsafe?.user.first_name,
+        user: tg.initDataUnsafe?.user,
         queryId: tg.initDataUnsafe?.query_id,
     }
 }
