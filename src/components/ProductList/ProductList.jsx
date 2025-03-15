@@ -3,6 +3,36 @@ import './ProductList.css';
 import ProductItem from '../ProductItem/ProductItem';
 import { useTelegram } from '../hooks/useTelegram';
 
+let products = [];
+
+let response = await fetch('https://www.sima-land.ru/iapi/product-list/items/v1/default-view/?page=1&sort=rating&currency=RUB&per-page=100&category_id=46161&page_type=category&f=null&with_adult=1&modifier_limit=5&settlement_id=27504067');
+
+if (response.ok) { // если HTTP-статус в диапазоне 200-299
+  // получаем тело ответа (см. про этот метод ниже)
+  let json = await response.json();
+  for (var i = 0; i < json.items.length; i++) {
+     console.log(json.items[i].name);
+     console.log('S'+json.items[i].sid);
+     console.log(json.items[i].wholesale.prices.main);
+     console.log(json.items[i].photos);
+      products.push({id: i, title: json.items[i].name, price: json.items[i].wholesale.prices.main*2, description: 'S'+json.items[i].sid})
+  }
+} else {
+  alert("Ошибка HTTP: " + response.status);
+}
+/*
+fetch('https://www.sima-land.ru/iapi/product-list/items/v1/default-view/?page=1&sort=rating&currency=RUB&per-page=100&category_id=46161&page_type=category&f=null&with_adult=1&modifier_limit=5&settlement_id=27504067')
+  .then(response => {
+    var listitems = response.data;
+    for (var i = 0; i < listitems.items.length; i++) {
+       console.log(listitems.items[i].name);
+       console.log('S'+listitems.items[i].sid);
+       console.log(listitems.items[i].wholesale.prices.main);
+       console.log(listitems.items[i].photos);
+        products.push(...{id: i, title: listitems.items[i].name, price: listitems.items[i].wholesale.prices.main, description: 'S'+listitems.items[i].sid})
+    }
+ })
+
 const products = [
     {id: '1', title: 'Джинсы', price: 5000, description: 'Синего цвета, прямые'},
     {id: '2', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая'},
@@ -13,7 +43,7 @@ const products = [
     {id: '7', title: 'Джинсы 4', price: 5500, description: 'Синего цвета, прямые'},
     {id: '8', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая'},
 ];
-
+*/
 const getTotalPrice = (items = []) => {
     return items.reduce((acc, item) => {
         return acc += item.price
@@ -30,11 +60,6 @@ const ProductList = () => {
             totalPrice: getTotalPrice(addedItems),
             queryId,
         }
-        tg.onEvent('mainButtonClicked', function(){
-            tg.sendData(JSON.stringify(data));
-            //when the main button is clicked, send data in string form
-        })
-        tg.sendData(data)
         fetch('https://75228552cf1a.vps.myjino.ru:8000/web-data', {
             method: 'POST',
             headers: {
