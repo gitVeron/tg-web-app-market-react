@@ -30,15 +30,14 @@ const ProductList = () => {
             totalPrice: getTotalPrice(addedItems),
             queryId,
         }
-        /*
+
         fetch('https://75228552cf1a.vps.myjino.ru:8000/web-data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data)
-        })*/
-        tg.sendData(JSON.stringify(data));
+        })
     }, [addedItems])
 
     useEffect(() => {
