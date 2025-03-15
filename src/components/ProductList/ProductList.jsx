@@ -3,7 +3,7 @@ import './ProductList.css';
 import ProductItem from '../ProductItem/ProductItem';
 import { useTelegram } from '../hooks/useTelegram';
 
-const product = [
+const products = [
     {id: '1', title: 'Джинсы', price: 5000, description: 'Синего цвета, прямые'},
     {id: '2', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая'},
     {id: '3', title: 'Джинсы 2', price: 5000, description: 'Синего цвета, прямые'},
@@ -66,7 +66,7 @@ const ProductList = () => {
     }
     return (
         <div className={'list'}>
-            {product.map(item => (
+            {products.map(item => (
                 <ProductItem
                     product={item}
                     onAdd={onAdd}
