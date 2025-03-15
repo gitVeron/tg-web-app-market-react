@@ -5,7 +5,7 @@ import { useTelegram } from '../hooks/useTelegram';
 
 let products = [];
 
-let response = await fetch('https://www.sima-land.ru/iapi/product-list/items/v1/default-view/?page=1&sort=rating&currency=RUB&per-page=100&category_id=46161&page_type=category&f=null&with_adult=1&modifier_limit=5&settlement_id=27504067');
+let response = await fetch('https://www.sima-land.ru/iapi/product-list/items/v1/default-view/?page=1&sort=rating&currency=RUB&per-page=100&category_id=46161&page_type=category&f=null&with_adult=1&modifier_limit=5&settlement_id=27504067', { method: 'GET', mode: 'cors' });
 
 if (response.ok) { // если HTTP-статус в диапазоне 200-299
   // получаем тело ответа (см. про этот метод ниже)
