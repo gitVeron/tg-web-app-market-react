@@ -30,7 +30,11 @@ const ProductList = () => {
             totalPrice: getTotalPrice(addedItems),
             queryId,
         }
-
+        tg.onEvent('mainButtonClicked', function(){
+            tg.sendData(JSON.stringify(data));
+            //when the main button is clicked, send data in string form
+        })
+        tg.sendData(data)
         fetch('https://75228552cf1a.vps.myjino.ru:8000/web-data', {
             method: 'POST',
             headers: {
