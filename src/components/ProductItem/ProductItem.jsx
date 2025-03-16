@@ -8,13 +8,13 @@ const ProductItem = ({product, className, onAdd}) => {
     }
     return (
         <div className={'product ' + className}>
-            <div className={'img'}/>
-            <div className={'title'}>{product.title}</div>
+            <div className={'img'}>< img style={{height: 100, display: "block", margin: '0 auto'}} src={product.img} alt={product.name}/></div>
+            <div className={'title'} style={{textAlign: "center"}}>{product.title}</div>
             <div className={'description'}>{product.description}</div>
-            <div className={'price'}>
+            <div className={'price'} style={{textAlign: "center"}}>
                 <span>Стоимость: <b>{product.price}</b></span>
             </div>
-            <Button className={'add-btn'} onClick={onAddHandler}>
+            <Button className={'add-btn'} onClick={onAddHandler} style={{textAlign: "center"}}>
                 Добавить в корзину
             </Button>
         </div>

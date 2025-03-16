@@ -2,10 +2,22 @@ import React, { useState, useEffect, useCallback } from 'react';
 import './ProductList.css';
 import ProductItem from '../ProductItem/ProductItem';
 import { useTelegram } from '../hooks/useTelegram';
+import file from './1/1.json';
 
 let products = [];
 
-let response = await fetch('https://www.sima-land.ru/iapi/product-list/items/v1/default-view/?page=1&sort=rating&currency=RUB&per-page=100&category_id=46161&page_type=category&f=null&with_adult=1&modifier_limit=5&settlement_id=27504067', { method: 'GET', mode: 'cors' });
+/*
+let response = await fetch('https://www.sima-land.ru/trademark/avtoboty/roboty/?c_id=61750&sort=price&viewtype=cards', { method: 'GET', mode: 'cors'//, headers: {
+//    "Access-Control-Allow-Origin": 'http://localhost:3000'
+
+//"Content-Type": "application/json",
+  //  "Connection": "keep-alive",
+//  "Access-Control-Allow-Origin": "*",
+//    "Access-Control-Allow-Credentials": "true",
+//    "Access-Control-Allow-Methods": "GET, HEAD, POST, DELETE, OPTIONS",
+//    "Access-Control-Allow-Headers": "Content-Type"
+//  }
+ });
 
 if (response.ok) { // если HTTP-статус в диапазоне 200-299
   // получаем тело ответа (см. про этот метод ниже)
@@ -20,8 +32,8 @@ if (response.ok) { // если HTTP-статус в диапазоне 200-299
 } else {
   alert("Ошибка HTTP: " + response.status);
 }
-/*
-fetch('https://www.sima-land.ru/iapi/product-list/items/v1/default-view/?page=1&sort=rating&currency=RUB&per-page=100&category_id=46161&page_type=category&f=null&with_adult=1&modifier_limit=5&settlement_id=27504067')
+
+axios.get('https://www.sima-land.ru/iapi/product-list/items/v1/default-view/?page=1&sort=rating&currency=RUB&per-page=100&category_id=46161&page_type=category&f=null&with_adult=1&modifier_limit=5&settlement_id=27504067')
   .then(response => {
     var listitems = response.data;
     for (var i = 0; i < listitems.items.length; i++) {
@@ -99,7 +111,7 @@ const ProductList = () => {
     }
     return (
         <div className={'list'}>
-            {products.map(item => (
+            {file.map(item => (
                 <ProductItem
                     product={item}
                     onAdd={onAdd}
