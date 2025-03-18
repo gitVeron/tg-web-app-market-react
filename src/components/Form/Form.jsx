@@ -1,7 +1,7 @@
 import React, { useCallback, useState, useEffect} from 'react';
 import './Form.css';
 import { useTelegram } from '../hooks/useTelegram';
-import file from '../ProductList/1/1.json';
+import file from '../ProductList/1.json';
 import ProductItem from '../ProductItem/ProductItem';
 import {Link} from 'react-router-dom';
 
@@ -14,7 +14,9 @@ const getTotalPrice = (items = []) => {
 const Form = () => {
         return (
             <div>
-                <Link to="/1" style={{display: 'block',textAlign: 'center'}}>Авто и мото</Link>
+                <Link to="/1" style={{display: 'block',textAlign: 'center'}}>Товары для Авто и мото</Link>
+                <Link to="/2" style={{display: 'block',textAlign: 'center'}}>Бытовая техника и электроника</Link>
+                <Link to="/3" style={{display: 'block',textAlign: 'center'}}>Детские товары</Link>
             </div>
         )
     /*

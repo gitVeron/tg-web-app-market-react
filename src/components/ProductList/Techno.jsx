@@ -1,8 +1,8 @@
 import React, { useCallback, useState, useEffect} from 'react';
-import '../../Form/Form.css';
-import { useTelegram } from '../../hooks/useTelegram';
-import file from './1.json';
-import ProductItem from '../../ProductItem/ProductItem';
+import '../Form/Form.css';
+import { useTelegram } from '../hooks/useTelegram';
+import file from './2.json';
+import ProductItem from '../ProductItem/ProductItem';
 
 const getTotalPrice = (items = []) => {
     return items.reduce((acc, item) => {
@@ -10,7 +10,7 @@ const getTotalPrice = (items = []) => {
     }, 0)
 }
 
-const Auto = () => {
+const Techno = () => {
         const [startIndex, setStartIndex] = useState([0]);
         let currentData = file.slice(startIndex, file.length);
 
@@ -83,4 +83,4 @@ const Auto = () => {
             </div>
         )
 }
-export default Auto;
+export default Techno;

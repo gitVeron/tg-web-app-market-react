@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import './ProductList.css';
 import ProductItem from '../ProductItem/ProductItem';
 import { useTelegram } from '../hooks/useTelegram';
-import file from './1/1.json';
+import file from './1.json';
 
 let products = [];
 
