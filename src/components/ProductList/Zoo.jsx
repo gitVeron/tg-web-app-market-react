@@ -1,7 +1,7 @@
 import React, { useCallback, useState, useEffect} from 'react';
 import '../Form/Form.css';
 import { useTelegram } from '../hooks/useTelegram';
-import file from './2.json';
+import file from './5.json';
 import ProductItem from '../ProductItem/ProductItem';
 
 const getTotalPrice = (items = []) => {
@@ -10,22 +10,9 @@ const getTotalPrice = (items = []) => {
     }, 0)
 }
 
-const Techno = () => {
+const Zoo = () => {
         const [startIndex, setStartIndex] = useState([0]);
-        const [searchString, setSearchString] = useState([]);
-        
         let currentData = file.slice(startIndex, file.length);
-
-        if (searchString != '') {
-            currentData = [];
-            file.forEach(element => {
-                let search = searchString.searchString.toLowerCase()
-                let string = element.title.toLowerCase()
-                if (string.includes(search) ) {
-                    currentData.push(element);
-                }
-            });
-        }
 
         const [addedItems, setAddedItems] = useState([]);
         const {tg, queryId} = useTelegram();
@@ -81,31 +68,19 @@ const Techno = () => {
                 setStartIndex(+startIndex+50);
             }
         }
-        const onSearch = (e) => {
-            setSearchString({ searchString: e.target.value });
-          }
+        
         return (
-            <div>
-                <div className="Search">
-                    <input
-                    className="SearchInput"
-                    type="text"
-                    onChange={onSearch}
-                    placeholder="Поиск"
+            <div className={'list'}>
+                {currentData.slice(0, 50).map(item => (
+                    <ProductItem
+                        product={item}
+                        onAdd={onAdd}
+                        className={'item'}
                     />
-                </div>
-                <div className={'list'}>
-                    {currentData.slice(0, 50).map(item => (
-                        <ProductItem
-                            product={item}
-                            onAdd={onAdd}
-                            className={'item'}
-                        />
-                    ))}
-                    <div style={{display: 'block', textAlign: "center"}}><button>Назад</button><button onClick={onNext}>Вперед</button>
-                    </div>  
-                </div>
+                ))}
+                <div style={{display: 'block', textAlign: "center"}}><button>Назад</button><button onClick={onNext}>Вперед</button>
+                </div>  
             </div>
         )
 }
-export default Techno;
+export default Zoo;

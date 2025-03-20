@@ -14,9 +14,11 @@ const getTotalPrice = (items = []) => {
 const Form = () => {
         return (
             <div>
-                <Link to="/1" style={{display: 'block',textAlign: 'center'}}>Товары для Авто и мото</Link>
-                <Link to="/2" style={{display: 'block',textAlign: 'center'}}>Бытовая техника и электроника</Link>
-                <Link to="/3" style={{display: 'block',textAlign: 'center'}}>Детские товары</Link>
+                <Link to="/1" style={{display: 'block',textAlign: 'center', color: 'red'}}>Товары для Авто и мото</Link>
+                <Link to="/2" style={{display: 'block',textAlign: 'center', color: 'red'}}>Бытовая техника и электроника</Link>
+                <Link to="/3" style={{display: 'block',textAlign: 'center', color: 'red'}}>Детские товары</Link>
+                <Link to="/4" style={{display: 'block',textAlign: 'center', color: 'red'}}>Дом и сад</Link>
+                <Link to="/5" style={{display: 'block',textAlign: 'center', color: 'red'}}>Товары для животных</Link>
             </div>
         )
     /*
