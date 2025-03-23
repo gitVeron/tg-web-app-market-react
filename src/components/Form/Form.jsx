@@ -19,6 +19,9 @@ const Form = () => {
                 <Link to="/3" style={{display: 'block',textAlign: 'center', color: 'red'}}>Детские товары</Link>
                 <Link to="/4" style={{display: 'block',textAlign: 'center', color: 'red'}}>Дом и сад</Link>
                 <Link to="/5" style={{display: 'block',textAlign: 'center', color: 'red'}}>Товары для животных</Link>
+                <Link to="/6" style={{display: 'block',textAlign: 'center', color: 'red'}}>Игрушки</Link>
+                <Link to="/7" style={{display: 'block',textAlign: 'center', color: 'red'}}>Канцтовары</Link>
+                <Link to="/15" style={{display: 'block',textAlign: 'center', color: 'red'}}>Продукты питания</Link>
             </div>
         )
     /*

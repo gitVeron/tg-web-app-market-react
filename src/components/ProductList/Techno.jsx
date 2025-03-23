@@ -95,15 +95,23 @@ const Techno = () => {
                     />
                 </div>
                 <div className={'list'}>
-                    {currentData.slice(0, 50).map(item => (
-                        <ProductItem
-                            product={item}
-                            onAdd={onAdd}
-                            className={'item'}
-                        />
-                    ))}
-                    <div style={{display: 'block', textAlign: "center"}}><button>Назад</button><button onClick={onNext}>Вперед</button>
-                    </div>  
+                {searchString !== '' ? 
+                currentData.map(item => (
+                    <ProductItem
+                        product={item}
+                        onAdd={onAdd}
+                        className={'item'}
+                    />
+                )) :
+                currentData.slice(0, 50).map(item => (
+                    <ProductItem
+                        product={item}
+                        onAdd={onAdd}
+                        className={'item'}
+                    />
+                ))}
+                <div style={{display: 'block', textAlign: "center"}}><button  disabled={startIndex == 0 ? true : false} onClick={()=> setStartIndex(+startIndex-50)}>Назад</button><button onClick={onNext}>Вперед</button>
+                </div>
                 </div>
             </div>
         )

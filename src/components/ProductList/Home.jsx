@@ -12,7 +12,20 @@ const getTotalPrice = (items = []) => {
 
 const Home = () => {
         const [startIndex, setStartIndex] = useState([0]);
+        const [searchString, setSearchString] = useState([]);
+
         let currentData = file.slice(startIndex, file.length);
+
+        if (searchString != '') {
+            currentData = [];
+            file.forEach(element => {
+                let search = searchString.searchString.toLowerCase()
+                let string = element.title.toLowerCase()
+                if (string.includes(search) ) {
+                    currentData.push(element);
+                }
+            });
+        }
 
         const [addedItems, setAddedItems] = useState([]);
         const {tg, queryId} = useTelegram();
@@ -68,18 +81,38 @@ const Home = () => {
                 setStartIndex(+startIndex+50);
             }
         }
-        
+        const onSearch = (e) => {
+            setSearchString({ searchString: e.target.value });
+          }
         return (
+            <div>
+            <div className="Search">
+                <input
+                className="SearchInput"
+                type="text"
+                onChange={onSearch}
+                placeholder="Поиск"
+                />
+            </div>
             <div className={'list'}>
-                {currentData.slice(0, 50).map(item => (
+                {searchString !== '' ? 
+                currentData.map(item => (
+                    <ProductItem
+                        product={item}
+                        onAdd={onAdd}
+                        className={'item'}
+                    />
+                )) :
+                currentData.slice(0, 50).map(item => (
                     <ProductItem
                         product={item}
                         onAdd={onAdd}
                         className={'item'}
                     />
                 ))}
-                <div style={{display: 'block', textAlign: "center"}}><button>Назад</button><button onClick={onNext}>Вперед</button>
-                </div>  
+                <div style={{display: 'block', textAlign: "center"}}><button  disabled={startIndex == 0 ? true : false} onClick={()=> setStartIndex(+startIndex-50)}>Назад</button><button onClick={onNext}>Вперед</button>
+                </div>
+            </div>
             </div>
         )
 }

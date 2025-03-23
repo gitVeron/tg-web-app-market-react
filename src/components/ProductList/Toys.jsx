@@ -1,7 +1,7 @@
 import React, { useCallback, useState, useEffect} from 'react';
 import '../Form/Form.css';
 import { useTelegram } from '../hooks/useTelegram';
-import file from './3.json';
+import file from './6.json';
 import ProductItem from '../ProductItem/ProductItem';
 
 const getTotalPrice = (items = []) => {
@@ -10,10 +10,10 @@ const getTotalPrice = (items = []) => {
     }, 0)
 }
 
-const Kids = () => {
+const Toys = () => {
         const [startIndex, setStartIndex] = useState([0]);
         const [searchString, setSearchString] = useState([]);
-
+        
         let currentData = file.slice(startIndex, file.length);
 
         if (searchString != '') {
@@ -86,15 +86,15 @@ const Kids = () => {
           }
         return (
             <div>
-            <div className="Search">
-            <input
-            className="SearchInput"
-            type="text"
-            onChange={onSearch}
-            placeholder="Поиск"
-            />
-        </div>
-            <div className={'list'}>
+                <div className="Search">
+                    <input
+                    className="SearchInput"
+                    type="text"
+                    onChange={onSearch}
+                    placeholder="Поиск"
+                    />
+                </div>
+                <div className={'list'}>
                 {searchString !== '' ? 
                 currentData.map(item => (
                     <ProductItem
@@ -111,9 +111,9 @@ const Kids = () => {
                     />
                 ))}
                 <div style={{display: 'block', textAlign: "center"}}><button  disabled={startIndex == 0 ? true : false} onClick={()=> setStartIndex(+startIndex-50)}>Назад</button><button onClick={onNext}>Вперед</button>
-                </div>  
-            </div>
+                </div>
+                </div>
             </div>
         )
 }
-export default Kids;
+export default Toys;

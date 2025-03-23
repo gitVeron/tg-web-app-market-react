@@ -10,6 +10,9 @@ import Techno from './components/ProductList/Techno';
 import Kids from './components/ProductList/Kids';
 import Home from './components/ProductList/Home';
 import Zoo from './components/ProductList/Zoo';
+import Toys from './components/ProductList/Toys';
+import Kants from './components/ProductList/Kants';
+import Meals from './components/ProductList/Meals';
 
 function App() {
   const {tg} = useTelegram();
@@ -28,6 +31,9 @@ function App() {
         <Route path={'3'} element={<Kids />}/>
         <Route path={'4'} element={<Home />}/>
         <Route path={'5'} element={<Zoo />}/>
+        <Route path={'6'} element={<Toys />}/>
+        <Route path={'7'} element={<Kants />}/>
+        <Route path={'15'} element={<Meals />}/>
       </Routes>
     </div>
   );
